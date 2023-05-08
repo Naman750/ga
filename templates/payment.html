@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Page</title>
+</head>
+<body>
+    <center><h1 style="color: green">Payment Page</h1>       <br> <br> 
+    <form method="post" action="{% url 'payment' %}">
+        {% csrf_token %}
+        <label for="card_number">Card Number:</label> &nbsp; &nbsp;
+        <input type="Number" id="card_number" name="card_number" placeholder = "card number"  required/>
+        <br> <br> <br>
+        <label for="expiry_date">Expiry Date:</label> &nbsp; &nbsp;
+        <input type="Number" id="expiry_date" name="expiry_date" placeholder = "Expiry Date"  required/>
+        <br> <br> <br>
+        <label for="cvv">CVV:</label> &nbsp; &nbsp;
+        <input type="Number" id="cvv" name="cvv" placeholder = "CVV" required/>
+        <br><br> <br> 
+        <input type = "submit" name = "submit">
+        <button class="btn btn-primary" style="color: blue">
+            <i class="fa fa-check" aria-hidden="true">
+              pay now
+             <a href = "https://razorpay.com/payment-links/"> pay  </a>
+            </i>  
+        </button>
+    </form> </center>
+    {% if error %}
+        <p>Error: {{ error }}</p>
+    {% endif %}
+</body>
+</html>
